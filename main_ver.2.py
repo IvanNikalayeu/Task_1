@@ -2,6 +2,9 @@ import pymysql
 from config import host, user, password,db_name
 import pandas as pd
 from sqlalchemy import create_engine
+import colorama
+from colorama import Fore, Back, Style
+colorama.init()
 
 def create_db(host, user, password, db_name):
     # creat DB
@@ -78,15 +81,16 @@ engine = create_engine(f'mysql+mysqldb://root:Gznsqyf[05@localhost/{db_name}')
 
 # input url, read file, extract name, create sql table
 
-url_file = input("Input URL rooms e.g. data/rooms.json \n ...  ")
+url_file = input('\033[5;28;34mInput URL rooms e.g. data/rooms.json \n ...  ')
 name_table = extract_name(url_file)
 df_table = pd.read_json(url_file)
 table_create(df_table, name_table)
 
-url_file = input("Input URL rooms e.g. data/students.json \n ...  ")
+url_file = input(Fore.GREEN + Back.RED + 'Input URL rooms e.g. data/students.json \n ...  ')
 name_table = extract_name(url_file)
 df_table = pd.read_json(url_file)
 table_create(df_table, name_table)
+print('\033[0m')
 
 # input file type
 
