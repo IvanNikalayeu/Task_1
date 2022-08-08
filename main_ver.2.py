@@ -74,6 +74,8 @@ def save_file (type_export, num_query, res_query):
     print(f'File {file_place} saved to data/ \n')
     return
 
+num_query = 0
+
 # create db
 create_db(host, user, password, db_name)
 
